@@ -1,0 +1,514 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
+  
+  
+
+
+//varijable boje
+
+$zelenat: #011F26;
+$zelenas: #9AA66D;
+$zelena: #01403A;
+$krem: #D9B573;
+$crvenas: #DB6E53;
+$providna2: rgba(0,0,0,0.2);
+
+body {
+    background-color: $zelenas; 
+    text-align: center;
+}
+
+.boda-form {
+    text-align: center;
+    
+    
+    
+
+    form {
+        display: grid;
+        grid-template-columns: 22% 22% 22% 22%;
+        grid-gap: 60px;
+        padding: 25px;
+        margin: auto;
+    width: 80%;
+    div {
+    text-align: center;
+    height: 150px;
+    border-radius: 15px;
+    padding: 10px;
+    border: 3px solid rgba(0,0,0,0.2);
+        
+        h3 {margin-top: -30px;
+            padding: 5px;
+            font-size: 25px;
+            color: $zelenat;
+            background: $zelenas;
+            border: 3px solid rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        input {
+            
+            width: 80%;
+            height: 70%;
+            text-align: center;
+            background: transparent;
+            border: 0px;
+            font-size: 4em;
+            font-weight: bold;
+        }
+        input:focus {
+            
+            outline-width: 0px;
+                outline: -webkit-focus-ring-color auto 0px;
+        }
+        
+       &:hover {
+            border: 3px solid rgba(0,0,0,0.7);
+             box-shadow: 5px 5px 30px rgba(0,0,0,0.3);
+
+        }
+    }
+        
+        .dugme { 
+            
+            overflow: hidden;
+            background: transparent!important;
+            border: 3px solid rgba(0,0,0,0.0);
+            input {
+                border-radius: 50px;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.2);
+                font-weight: bold;
+                font-size: 2em;
+                cursor: pointer;
+                &:hover {
+                    color:white;
+                    background: rgba(0,0,0,0.7);
+                   
+                }
+            }
+            &:hover {
+                
+               border: 3px solid rgba(0,0,0,0.0); 
+                box-shadow: 0px 0px 30px rgba(0,0,0,0.0);
+                             
+
+            }
+        }
+    }
+}
+.tabelaIzracunatihpotreba {
+    margin: auto;
+    width: 80%;
+    table {
+          border-collapse: collapse;
+        width: 100%;
+
+        
+        tbody{
+        tr {
+            color: black;
+            
+        }
+            td, th {padding: 5px;border: 2px solid $zelenas;background: rgba(0,0,0,0.1); width: 10%;}
+            }
+    } 
+    .text-levo {text-align: left;padding-left: 5px;width:30%;}
+    .tamnije {background: rgba(0,0,0,0.5); color:$zelenas;}
+    .tam2 {background: rgba(0,0,0,0.2); }
+    .unpot {
+        margin-top: 5px;
+    }
+    .bez {background: rgba(0,0,0,0.0);}
+}
+.hraniva {display: block;
+            position: relative;
+            margin-bottom: 30px;}
+.listahraniva {
+    vertical-align: top;
+    display: inline-block;
+    position: relative;
+    margin: 5px 20px;
+    width: 40%;
+    text-align: left;
+    
+    h1 {text-align: center;}
+    table {
+        td {
+            width: 50%;
+            
+        }
+        
+    }
+    
+}
+.raspolozivahraniva {
+    vertical-align: top;
+    position: relative;
+    display: inline-block;
+    
+    margin: 5px 20px;
+    width: 40%;
+    text-align: left;
+    
+    h1 {text-align: center;}
+    .izbhraniva {
+         overflow-y: scroll;  
+        height: 402px;
+        border: 3px solid rgba(0,0,0,0.2);
+        border-radius: 10px;
+        
+        h2 {
+            
+            text-align: center;
+            display: table;
+            margin: 0px auto 10px auto;
+            padding: 5px 20px;
+            border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+        }
+        .hranivo{
+        padding: 5px;
+        position: relative;
+        display: block;
+        margin-bottom: 5px;
+       
+        .naziv {
+            background-color: rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            padding: 5px; 
+            padding-left: 9px;
+            width: 65%;
+            margin-right: 3px;
+            height: 20px;
+            font-weight: bold;
+            
+        }
+        .kolicina {
+            position: relative;
+            vertical-align: top;
+            display: inline-block;
+            width: 70px;
+            height: 30px;
+            margin-right: 3px;
+            background-color: rgba(0, 0, 0, 0.2);
+            &::after{
+                content: 'kg';
+                position: absolute;
+                top: 5px;
+                right: .4em;
+                color: white;
+                font-weight: bold;
+            }
+            input {
+                width: 50px;
+                text-align: center;
+                background: transparent;
+                border-width: 0px;
+                color: white;
+                font-size: 15px;
+                height: 28px;
+                font-weight: bold;
+                
+                
+            }
+                
+        }
+        .kolicinanaz {
+            position: relative;
+            vertical-align: top;
+            display: inline-block;
+            width: 70px;
+            height: 25px;
+            margin-right: 3px;
+            background-color: rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 15px;
+            color: white;
+            font-weight: bold;
+            padding-top: 5px;
+                }
+        
+        button {
+            
+            vertical-align: top;
+            top:5px;
+            padding: 5px;
+            margin-right: 3px;
+            width: 30px;
+            height: 30px;
+            color: white;   
+            font-weight: bold;
+            font-size: 20px;
+            padding-top: 1px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-width: 0px;
+            cursor: pointer;
+            &:hover {
+            background-color: $crvenas;
+            }
+            
+        }
+            .blanko {
+                cursor: default;
+                color: transparent;
+                background-color: rgba(0, 0, 0, 0.5);
+                &:hover{
+                    background-color: rgba(0, 0, 0, 0.5);
+                }
+            }
+            .info {
+                background-color: rgba(0, 0, 0, 0.5)!important;
+                color: white;
+                
+            }
+        .tooltip {
+            font-weight: bold;
+            display: inline-block;
+            padding: 5px;
+            margin-right: 3px;
+            width: 30px;
+            height: 20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            cursor: help;
+            &:hover {
+            background-color: rgba(0, 0, 0, 0.5);   
+            }
+        }
+        .tooltip .tooltip-tekst {
+          visibility: hidden;
+
+          background-color: $zelena;
+          color: white;
+          text-align: center;
+          border-radius: 6px;
+          padding: 8px;
+            top:3px;
+            right: 90px;
+          /* Position the tooltip */
+          position: absolute;
+          z-index: 9999;
+        
+        }
+
+        .tooltip:hover .tooltip-tekst {
+            visibility: visible;
+            cursor: pointer;
+        }
+    }
+    }
+    
+}
+.tabs {width: 100%;}
+.tab-list {
+  border-bottom: 3px solid rgba(0,0,0,0.2);
+  padding-left: 0;
+    margin: 0px;
+}
+
+.tab-list-item {
+      border-radius: 10px 10px 0px 0px;
+      cursor: pointer;
+      display: inline-block;
+      list-style: none;
+      width: 28%;
+      padding: 0.5rem 0.75rem;
+        text-align: center;
+    
+}
+
+.tab-list-active {
+  background-color: rgba(0,0,0,0.2);
+  border: solid rgba(0,0,0,0.0);
+  border-width: 1px 1px 0 1px;
+    font-weight: bold;
+}
+.tab-content {
+        border: solid rgba(0,0,0,0.2);
+    border-width: 0 3px 3px 3px;
+    border-radius: 0px 0px 10px 10px;
+}
+.lista {
+    padding: 5px;
+    height: 300px;
+    overflow-y:scroll;
+    z-index: 1;
+    
+    .hranivo{
+        position: relative;
+        display: block;
+        margin-bottom: 5px;
+        &:nth-of-type(odd) {
+            .naziv{background-color: rgba(0, 0, 0, 0.1);}
+            
+            }
+        .naziv {
+            display: inline-block;
+            padding: 5px; 
+            width: 80%;
+            margin-right: 3px;
+            height: 20px;
+            
+        }
+        
+        button {
+            vertical-align: top;
+            padding: 5px;
+            margin-right: 3px;
+            width: 30px;
+            height: 30px;
+            color: white;   
+            font-weight: bold;
+            font-size: 15px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-width: 0px;
+            cursor: pointer;
+            &:hover {
+            background-color: $krem;
+            color: black;
+            }
+        }
+        .tooltip {
+            font-weight: bold;
+            display: inline-block;
+            padding: 5px;
+            margin-right: 3px;
+            width: 30px;
+            height: 20px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+            cursor: help;
+            &:hover {
+            background-color: rgba(0, 0, 0, 0.5);   
+            }
+        }
+        .tooltip .tooltip-tekst {
+          visibility: hidden;
+
+          background-color: $zelena;
+          color: white;
+          text-align: center;
+          border-radius: 6px;
+          padding: 8px;
+            top:-3px;
+            right: 90px;
+          /* Position the tooltip */
+          position: absolute;
+          z-index: 9999;
+        
+        }
+
+        .tooltip:hover .tooltip-tekst {
+            visibility: visible;
+            cursor: pointer;
+        }
+    }
+}
+    
+
+
+
+
+
+.cntr{display:table;width:100%;height:100%;.cntr-innr{display:table-cell;text-align:center;vertical-align:middle}}
+
+/*** STYLES ***/
+.search {
+	display: inline-block;
+	position: relative;
+    color: black;
+	height: 35px;
+	width: 80%;
+	box-sizing: border-box;
+	margin: 10px 8px 10px 0px;
+    margin-right: 0px;
+	padding: 3px 9px 0px 9px;  
+	border: 4px solid rgba(0,0,0,0.2);
+	border-radius: 25px;
+	transition: all 200ms ease;
+	cursor: text;
+	
+	
+	
+	&.active
+   
+	 {   
+        color: black;
+		width: 80%;
+		margin-right: 0px;
+        
+		
+		&:after {
+			height: 0px;	
+		}
+	}
+	
+	input {
+		width: 100%;
+		border: none;
+		box-sizing: border-box;
+		
+		font-size: 15px;
+		color: inherit;
+		background: transparent;
+		outline-width: 0px;
+	}
+    input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: Black;
+    opacity: 0.5; /* Firefox */
+    }
+
+    input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: black;
+    }
+
+    input::-ms-input-placeholder { /* Microsoft Edge */
+    color: black;
+    }
+    
+}
+
+
+
+ ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 7px;
+        cursor:pointer;
+     
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(0,0,0,.5);
+        box-shadow: 0 0 1px rgba(255,255,255,.5);
+        -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+        padding: 5px;
+        cursor:pointer;
+        
+    }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+
+*:focus {
+    outline: none;
+}
