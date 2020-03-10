@@ -11,7 +11,7 @@ class ElementRaspolozivih extends Component {
                 <div className="tooltip">?
                     <span className="tooltip-tekst">{this.props.Kategorija}</span>
                 </div>
-                <button>x</button>    
+                <button onClick={this.props.onClick}>x</button>    
             </div>
 
         )

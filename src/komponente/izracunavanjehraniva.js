@@ -16,16 +16,18 @@ import IzracunataTabela from './izracunavanje-hraniva/tabela';
 import { metabolickaMasa, oduzimanje, fcM, ksM, neL, ssP, Ca, fosforMin, neLPPM, ssPPPM, CaPPM, fosforMinPPM, sP, sPj, ppmSP, sabiranje, MaxKonzSM, MaxKonzSMkoncdeo, korigovanjeSM, povecanjeNELst, povecanjeSSPst, povecanjeCa, povecanjeP, suvamaterijaHranivo, deljenje, mnozSM, sabiranjetri, MinKonzSMkabdeo } from './izracunavanje-hraniva/formule';
 //Hraniva
 import { kabasta, koncentrovana, mineralna } from './izracunavanje-hraniva/liste-hraniva/hraniva';
-////Nizovi
-
+//PDF
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import PdfDokument from './pdfdokument';
 
 //Pretraga
 import PretragaHraniva from './izracunavanje-hraniva/liste-hraniva/pretraga';
+//Autorizacija
+import {withAuthorization} from './auth/sesija';
 
 
 
-
-export default class IzracunavanjeHraniva extends Component {
+class IzracunavanjeHraniva extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -132,7 +134,7 @@ export default class IzracunavanjeHraniva extends Component {
     dodajIzbaciKabasta = (id, e) => {       
         e.preventDefault();
         var uhKabasta = this.state.hKabasta.find((x) => {return x.id === id});
-        if (uhKabasta !== null) {
+        if (uhKabasta != null) {
           
           let novahKabasta = this.state.hKabasta.filter((x) => {return x.id !== id});
           let novarKabasta = this.state.rKabasta;
@@ -150,7 +152,7 @@ export default class IzracunavanjeHraniva extends Component {
     dodajIzbaciKoncentrovana = (id, e) => {       
         e.preventDefault();
         var uhKoncentrovana = this.state.hKoncentrovana.find((x) => {return x.id === id});
-        if (uhKoncentrovana !== null) {
+        if (uhKoncentrovana != null) {
           
           let novahKoncentrovana = this.state.hKoncentrovana.filter((x) => {return x.id !== id});
           let novarKoncentrovana = this.state.rKoncentrovana;
@@ -168,7 +170,7 @@ export default class IzracunavanjeHraniva extends Component {
     dodajIzbaciMineralna = (id, e) => {       
         e.preventDefault();
         var uhMineralna = this.state.hMineralna.find((x) => {return x.id === id});
-        if (uhMineralna !== null) {
+        if (uhMineralna != null) {
           
           let novahMineralna = this.state.hMineralna.filter((x) => {return x.id !== id});
           let novarMineralna = this.state.rMineralna;
@@ -259,9 +261,9 @@ export default class IzracunavanjeHraniva extends Component {
             {ime: 'Mineralna', kategorija: filtriranoMineralno, pretraga: 'pMineralna', funkc: 'dodajIzbaciMineralna'}
         ];
         const rHraniva = [
-            {kategorija: 'Kabasta hraniva', rhraniva: rKabasta, izmena: 'promenaKolKabasto'},
-            {kategorija: 'Koncentrovana hraniva', rhraniva: rKoncentrovana, izmena: 'promenaKolKoncentrovano'},
-            {kategorija: 'Mineralna hraniva', rhraniva: rMineralna, izmena: 'promenaKolMineralno'}
+            {kategorija: 'Kabasta hraniva', rhraniva: rKabasta, izmena: 'promenaKolKabasto', funkc: 'dodajIzbaciKabasta'},
+            {kategorija: 'Koncentrovana hraniva', rhraniva: rKoncentrovana, izmena: 'promenaKolKoncentrovano', funkc: 'dodajIzbaciKoncentrovana'},
+            {kategorija: 'Mineralna hraniva', rhraniva: rMineralna, izmena: 'promenaKolMineralno', funkc: 'dodajIzbaciMineralna'}
         ];
         return (
             <div>
@@ -345,14 +347,83 @@ export default class IzracunavanjeHraniva extends Component {
                             <ElementRasNaslov/>
                             {kat.rhraniva.map((x,i) => {
                                 return <ElementRaspolozivih key={i} {...x} 
-                                onChange={(e) => this[x.izmenaKol](x, e.target.value || 0)} />
+                                onChange={(e) => this[x.izmenaKol](x, e.target.value || 0)}
+                                onClick={(e) => this[kat.funkc](x.id, e)} />
                             })}
                         </div>
                     )
                 })}
                 </ElementiRaspolozivih>
                 </div>
+                <div className='bodaPdf'>
+                <PDFDownloadLink
+                    document={<PdfDokument
+                        telesnaMasa={this.state.telesnaMasa}
+                        daniLaktacije={this.state.daniLaktacije}
+                        laktacija={this.state.laktacija}
+                        prinosMleka={this.state.prinosMleka}
+                        mlecnaMast={this.state.mlecnaMast}
+                        steonost={this.state.steonost}
+                        dnevniPrirast={this.state.dnevniPrirast}
+
+                        sm={''}
+                        uznetoenergija={this.state.uznetoenergija}
+                        siroviproteini={this.state.siroviproteini}
+                        uzsvarljiviproteini={this.state.uzsvarljiviproteini}
+                        uzkalcijum={this.state.uzkalcijum}
+                        uzfosfor={this.state.uzfosfor}
+
+                        ppmnetoenergija={this.state.ppmnetoenergija}
+                        siroviproteinippm={this.state.siroviproteinippm}
+                        ppmsvaljiviproteini={this.state.ppmsvaljiviproteini}
+                        ppmkalcijum={this.state.ppmkalcijum}
+                        ppmfosfor={this.state.ppmfosfor}
+
+                        konzsuvmattabela={this.state.konzsuvmattabela}
+                        ukupnoen={this.state.ukupnoen}
+                        siroviproteiniuk={this.state.siroviproteiniuk}
+                        ukupnosp={this.state.ukupnosp}
+                        ukupnok={this.state.ukupnok}
+                        ukupnof={this.state.ukupnof}
+                        
+                        kabkoncuksm={kabkoncuksm}
+                        kabkoncuknel={kabkoncuknel}
+                        kabkoncuksp={kabkoncuksp}
+                        kabkoncukssp={kabkoncukssp}
+                        kabkoncukca={kabkoncukca}
+                        kabkoncukp={kabkoncukp}
+                        
+                        razlikasm={razlikasm}
+                        razlikanel={razlikanel}
+                        razlikasp={razlikasp}
+                        razlikassp={razlikassp}
+                        razlikaca={razlikaca}
+                        razlikap={razlikap}
+
+                        mksmkabastideo={this.state.mksmkabastideo}
+                        kabastauksm={kabastauksm}
+                        
+                        koncdeousm={koncdeousm}
+                        koncuksm={koncuksm}
+
+                        rKabasta={this.state.rKabasta}
+                        rKoncentrovana={this.state.rKoncentrovana}
+                        rMineralna={this.state.rMineralna}
+
+
+                       />}
+                    fileName="bodavet-faktura.pdf"
+                    
+                >
+                    {({ blob, url, loading, error }) =>
+                        loading ? "Učitavanje dokumenta..." : "Skini PDF"
+                    }
+                 </PDFDownloadLink>
+                 </div>
             </div>
         )
     }
 }
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(IzracunavanjeHraniva);

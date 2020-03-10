@@ -37,4 +37,16 @@ class UnosPodataka extends Component {
 
 }
 
+export const UnosPodatakaEmailZahtev = (props) => (
+            <div>
+               <h2 style={{textAlign: 'center'}}>2. Unos podataka</h2>
+                <div className="boda-form">
+                    <form onSubmit={props.izracunavanje}>
+                    {props.children} 
+                    </form>
+                </div>
+            </div>
+            )
+
+
 export default UnosPodataka;
