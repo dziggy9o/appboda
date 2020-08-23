@@ -11,7 +11,7 @@ export function metabolickaMasa(a) {
 
 export function fcM(a,b) {
     var fcmm = a * (0.4 + (0.15 * b));
-    return fcmm.toFixed(4);
+    return fcmm.toFixed(2);
 };
 
 export function ksM(a,b) {

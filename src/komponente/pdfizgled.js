@@ -1,16 +1,18 @@
-import {StyleSheet} from '@react-pdf/renderer'
+import {StyleSheet, Font} from '@react-pdf/renderer'
 
-
+Font.register('https://github.com/chenqing/ng-mini/blob/master/font/msyh.ttf', { family: 'Microsoft Yahei' });
 
 
 export const izgled = StyleSheet.create({
     stranica: {
         padding: '20px',
+        
     },
     heder: {
         paddingLeft: '12px',
         flexDirection: 'row',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        
     },
     logoslika: {
         width: '87px',

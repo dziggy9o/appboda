@@ -278,7 +278,7 @@ class AnalizaKrava extends Component {
         return (
             <section>
                 <div className='analizaOP'>
-                <h2 style={{textAlign: 'center'}}>1. Osnovni podaci</h2>
+                <h2>1. Osnovni podaci</h2>
                     {osnovniPodaci.map((x, i) => {
                         return (<div>
                         <h4>{x.firma}</h4>

@@ -21,8 +21,9 @@ class UnosPodataka extends Component {
     render() {
         return (
             <div>
-               <h2>Unos podataka</h2>
+               
                 <div className="boda-form">
+                <h2>Unos podataka</h2>
                     <form onSubmit={this.props.izracunavanje}>
                     {this.props.children}
                     <div className="dugme">
@@ -39,8 +40,9 @@ class UnosPodataka extends Component {
 
 export const UnosPodatakaEmailZahtev = (props) => (
             <div>
-               <h2 style={{textAlign: 'center'}}>2. Unos podataka</h2>
+               
                 <div className="boda-form">
+                <h2>2. Unos podataka</h2>
                     <form onSubmit={props.izracunavanje}>
                     {props.children} 
                     </form>
